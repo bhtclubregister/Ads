@@ -1288,44 +1288,67 @@
 </style>
 
 <script>
-// ── REAL MIDNIGHT COUNTDOWN ──
-function updateMidnightCountdown() {
-  const now = new Date();
-  const midnight = new Date();
-  midnight.setHours(24, 0, 0, 0); // tonight's midnight
-  
-  let diff = Math.floor((midnight - now) / 1000);
-  if (diff < 0) diff = 0;
+// ── PERSISTENT COUNTDOWN (locks to first visit, survives refresh) ──
+function updateCountdown() {
+  const DURATION = 24 * 60 * 60 * 1000; // 24 hours in ms
 
-  const h = Math.floor(diff / 3600);
-  const m = Math.floor((diff % 3600) / 60);
-  const s = diff % 60;
+  // First visit: save timestamp. Return visits: use saved timestamp.
+  let startTime = localStorage.getItem('offer_start');
+  if (!startTime) {
+    startTime = Date.now();
+    localStorage.setItem('offer_start', startTime);
+  }
+
+  const elapsed = Date.now() - parseInt(startTime);
+  let remaining = Math.floor((DURATION - elapsed) / 1000);
+
+  // If expired, reset for next day (optional: keep at 00:00:00)
+  if (remaining <= 0) {
+    localStorage.removeItem('offer_start');
+    remaining = 0;
+  }
+
+  const h = Math.floor(remaining / 3600);
+  const m = Math.floor((remaining % 3600) / 60);
+  const s = remaining % 60;
 
   document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
   document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
   document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
 
-  // Urgency color shift when under 1 hour
+  // Turn red when under 1 hour
   if (h < 1) {
-    document.querySelectorAll('#cd-h, #cd-m, #cd-s').forEach(el => {
-      el.style.color = '#EF4444';
+    ['cd-h','cd-m','cd-s'].forEach(id => {
+      document.getElementById(id).style.color = '#EF4444';
+    });
+  }
+
+  // Turn red and shake when under 5 mins
+  if (h === 0 && m < 5) {
+    ['cd-h','cd-m','cd-s'].forEach(id => {
+      document.getElementById(id).style.animation = 'shake 0.5s infinite';
     });
   }
 }
-updateMidnightCountdown();
-setInterval(updateMidnightCountdown, 1000);
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-// ── SLOTS SCARCITY (changes based on time of day) ──
+// ── SLOTS (locked to first visit hour, survives refresh) ──
 function updateSlots() {
-  const hour = new Date().getHours();
-  let claimed, remaining;
+  let visitHour = localStorage.getItem('visit_hour');
+  if (!visitHour) {
+    visitHour = new Date().getHours();
+    localStorage.setItem('visit_hour', visitHour);
+  }
+  visitHour = parseInt(visitHour);
 
-  if (hour < 9)        { claimed = 8;  remaining = 12; }
-  else if (hour < 12)  { claimed = 13; remaining = 7;  }
-  else if (hour < 15)  { claimed = 16; remaining = 4;  }
-  else if (hour < 18)  { claimed = 18; remaining = 2;  }
-  else if (hour < 21)  { claimed = 19; remaining = 1;  }
-  else                 { claimed = 19; remaining = 1;  }
+  let claimed, remaining;
+  if (visitHour < 9)       { claimed = 8;  remaining = 12; }
+  else if (visitHour < 12) { claimed = 13; remaining = 7;  }
+  else if (visitHour < 15) { claimed = 16; remaining = 4;  }
+  else if (visitHour < 18) { claimed = 18; remaining = 2;  }
+  else if (visitHour < 21) { claimed = 19; remaining = 1;  }
+  else                     { claimed = 19; remaining = 1;  }
 
   const total = claimed + remaining;
   const pct = Math.round((claimed / total) * 100);
@@ -1361,6 +1384,21 @@ setInterval(() => {
 }, 4000);
 </script>
 
+<style>
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50% { opacity:0; }
+}
+@keyframes pulse-btn {
+  0%,100% { box-shadow: 0 8px 25px rgba(26,86,219,0.35); }
+  50% { box-shadow: 0 8px 40px rgba(26,86,219,0.6), 0 0 0 8px rgba(26,86,219,0.1); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+</style>
 <!-- FAQ -->
 <section>
   <div class="center reveal">
