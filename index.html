@@ -1054,9 +1054,9 @@
           <div class="das-wa-btn">
             💬 Chat on WhatsApp — Get Free Advice
           </div>
-          <!-- <div style="background:#F3F4F6; border-radius:10px; padding:10px 14px; font-size:0.72rem; color:var(--muted);">
-            📞 Call: +91 98765 43210 &nbsp;|&nbsp; 📍 Lucknow, UP
-          </div> -->
+         <div style="background:#F3F4F6; border-radius:10px; padding:10px 14px; font-size:0.72rem; color:var(--muted);">
+            📞 Call: +91 70219 64223 &nbsp;|&nbsp; 📍 Lucknow, UP
+          </div>
         </div>
       </div>
     </div>
@@ -1209,20 +1209,157 @@
 
 <!-- URGENCY -->
 <section style="padding:20px 5% 80px;">
-  <div class="urgency reveal">
-    <h3>🎁 Limited Time Offer — Free Logo Setup Worth ₹500</h3>
-    <p>Get a professionally designed logo absolutely FREE with your Premium Plan. Offer valid for a limited time only!</p>
-    <div class="countdown" id="countdown">
-      <div class="count-box"><div class="count-num" id="cd-h">23</div><div class="count-label">Hours</div></div>
-      <div class="count-box"><div class="count-num" id="cd-m">47</div><div class="count-label">Mins</div></div>
-      <div class="count-box"><div class="count-num" id="cd-s">59</div><div class="count-label">Secs</div></div>
+  <div class="urgency reveal" style="max-width:700px; margin:0 auto; background:linear-gradient(135deg,#FEF3C7,#FFF7ED); border-radius:24px; padding:40px; text-align:center; border:2px dashed #F59E0B;">
+    
+    <!-- Top Live Badge -->
+    <div style="display:inline-flex; align-items:center; gap:8px; background:#fff; border-radius:50px; padding:6px 18px; margin-bottom:20px; box-shadow:0 2px 12px rgba(245,158,11,0.2);">
+      <span style="width:8px;height:8px;background:#EF4444;border-radius:50%;display:inline-block;animation:blink 1s infinite;"></span>
+      <span style="font-size:0.78rem;font-weight:700;color:#92400E;">OFFER EXPIRES TODAY MIDNIGHT</span>
     </div>
-    <br>
-    <a href="https://wa.me/917021964223?text=Hi!%20I%20want%20to%20claim%20the%20free%20logo%20offer" class="btn-primary" target="_blank" style="margin-top:16px; display:inline-flex;">
-      💬 Claim Free Logo Offer Now
+
+    <h3 style="font-size:1.4rem;font-weight:800;color:#92400E;margin-bottom:10px;">
+      🎁 Free Logo Setup Worth ₹500 — Ending Tonight!
+    </h3>
+    <p style="color:#B45309;font-size:0.95rem;margin-bottom:24px;">
+      Get a professionally designed logo <strong>absolutely FREE</strong> with your Premium Plan.<br>
+      This offer ends at <strong>midnight tonight</strong>. Don't miss it!
+    </p>
+
+    <!-- Countdown -->
+    <div style="display:flex;justify-content:center;gap:12px;margin-bottom:24px;">
+      <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 4px 20px rgba(245,158,11,0.2);min-width:75px;border:2px solid #FDE68A;">
+        <div style="font-size:2.2rem;font-weight:900;color:#D97706;line-height:1;" id="cd-h">--</div>
+        <div style="font-size:0.65rem;font-weight:700;color:#92400E;text-transform:uppercase;margin-top:4px;">Hours</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:1.8rem;font-weight:900;color:#D97706;">:</div>
+      <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 4px 20px rgba(245,158,11,0.2);min-width:75px;border:2px solid #FDE68A;">
+        <div style="font-size:2.2rem;font-weight:900;color:#D97706;line-height:1;" id="cd-m">--</div>
+        <div style="font-size:0.65rem;font-weight:700;color:#92400E;text-transform:uppercase;margin-top:4px;">Mins</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:1.8rem;font-weight:900;color:#D97706;">:</div>
+      <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 4px 20px rgba(245,158,11,0.2);min-width:75px;border:2px solid #FDE68A;">
+        <div style="font-size:2.2rem;font-weight:900;color:#D97706;line-height:1;" id="cd-s">--</div>
+        <div style="font-size:0.65rem;font-weight:700;color:#92400E;text-transform:uppercase;margin-top:4px;">Secs</div>
+      </div>
+    </div>
+
+    <!-- Slots Bar -->
+    <div style="background:#fff;border-radius:16px;padding:16px 20px;margin-bottom:24px;border:1px solid #FDE68A;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span style="font-size:0.82rem;font-weight:700;color:#92400E;">🔥 Slots Remaining Today</span>
+        <span style="font-size:0.82rem;font-weight:800;color:#EF4444;" id="slots-text">Only 3 left!</span>
+      </div>
+      <div style="background:#FEE2E2;border-radius:50px;height:10px;overflow:hidden;">
+        <div id="slots-bar" style="height:100%;background:linear-gradient(90deg,#EF4444,#F97316);border-radius:50px;transition:width 1s ease;width:85%;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;">
+        <span style="font-size:0.7rem;color:#B45309;">17 slots claimed today</span>
+        <span style="font-size:0.7rem;color:#EF4444;font-weight:700;">3 remaining</span>
+      </div>
+    </div>
+
+    <!-- Social Proof Ticker -->
+    <div style="background:#fff3;border-radius:10px;padding:10px 16px;margin-bottom:24px;font-size:0.8rem;color:#92400E;font-weight:600;" id="social-ticker">
+      👤 Ramesh from Kanpur just claimed this offer 2 mins ago
+    </div>
+
+    <!-- CTA Button -->
+    <a href="https://wa.me/917021964223?text=Hi!%20I%20want%20to%20claim%20the%20free%20logo%20offer%20before%20midnight" 
+       class="btn-primary" target="_blank" 
+       style="margin-top:8px;display:inline-flex;font-size:1.05rem;padding:16px 36px;animation:pulse-btn 2s infinite;">
+      💬 Claim Free Logo Before Midnight
     </a>
+
+    <p style="margin-top:14px;font-size:0.75rem;color:#B45309;">
+      ⚡ After midnight, logo setup will cost ₹500 extra. Act now!
+    </p>
   </div>
 </section>
+
+<style>
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50% { opacity:0; }
+}
+@keyframes pulse-btn {
+  0%,100% { box-shadow: 0 8px 25px rgba(26,86,219,0.35); }
+  50% { box-shadow: 0 8px 40px rgba(26,86,219,0.6), 0 0 0 8px rgba(26,86,219,0.1); }
+}
+</style>
+
+<script>
+// ── REAL MIDNIGHT COUNTDOWN ──
+function updateMidnightCountdown() {
+  const now = new Date();
+  const midnight = new Date();
+  midnight.setHours(24, 0, 0, 0); // tonight's midnight
+  
+  let diff = Math.floor((midnight - now) / 1000);
+  if (diff < 0) diff = 0;
+
+  const h = Math.floor(diff / 3600);
+  const m = Math.floor((diff % 3600) / 60);
+  const s = diff % 60;
+
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+
+  // Urgency color shift when under 1 hour
+  if (h < 1) {
+    document.querySelectorAll('#cd-h, #cd-m, #cd-s').forEach(el => {
+      el.style.color = '#EF4444';
+    });
+  }
+}
+updateMidnightCountdown();
+setInterval(updateMidnightCountdown, 1000);
+
+// ── SLOTS SCARCITY (changes based on time of day) ──
+function updateSlots() {
+  const hour = new Date().getHours();
+  let claimed, remaining;
+
+  if (hour < 9)        { claimed = 8;  remaining = 12; }
+  else if (hour < 12)  { claimed = 13; remaining = 7;  }
+  else if (hour < 15)  { claimed = 16; remaining = 4;  }
+  else if (hour < 18)  { claimed = 18; remaining = 2;  }
+  else if (hour < 21)  { claimed = 19; remaining = 1;  }
+  else                 { claimed = 19; remaining = 1;  }
+
+  const total = claimed + remaining;
+  const pct = Math.round((claimed / total) * 100);
+
+  document.getElementById('slots-bar').style.width = pct + '%';
+  document.getElementById('slots-text').textContent = 'Only ' + remaining + ' left!';
+  document.querySelector('[style*="17 slots claimed"]').textContent = claimed + ' slots claimed today';
+  document.querySelector('[style*="3 remaining"]').textContent = remaining + ' remaining';
+}
+updateSlots();
+
+// ── SOCIAL PROOF TICKER ──
+const proofMessages = [
+  '👤 Ramesh from Kanpur just claimed this offer 2 mins ago',
+  '👤 Priya from Jaipur got her website 10 mins ago',
+  '👤 Suresh from Nagpur claimed the free logo 5 mins ago',
+  '👤 Anita from Bhopal just WhatsApp\'d us for her website',
+  '👤 Mahesh from Surat grabbed this offer 3 mins ago',
+  '👤 Kavita from Indore just placed her order',
+  '👤 Ravi from Patna claimed free logo just now',
+];
+let tickerIndex = 0;
+const ticker = document.getElementById('social-ticker');
+
+setInterval(() => {
+  ticker.style.opacity = '0';
+  ticker.style.transition = 'opacity 0.4s';
+  setTimeout(() => {
+    tickerIndex = (tickerIndex + 1) % proofMessages.length;
+    ticker.textContent = proofMessages[tickerIndex];
+    ticker.style.opacity = '1';
+  }, 400);
+}, 4000);
+</script>
 
 <!-- FAQ -->
 <section>
